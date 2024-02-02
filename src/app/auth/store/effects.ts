@@ -5,7 +5,7 @@ import { authActions } from './actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
 import { HttpErrorResponse } from '@angular/common/http';
-import { PersistenceService } from '../../shared/persitence.service';
+import { PersistenceService } from '../../shared/services/persitence.service';
 import { Router } from '@angular/router';
 
 export const registerEffect = createEffect(
@@ -86,4 +86,32 @@ export const redirectAfterLoginEffect = createEffect(
     );
   },
   { functional: true, dispatch: false }
+);
+
+export const GetCurrentUserEffect = createEffect(
+  (
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    persistenceService = inject(PersistenceService)
+  ) => {
+    return actions$.pipe(
+      ofType(authActions.getCurrentUser),
+      switchMap(() => {
+        const token = persistenceService.get('accesToken');
+
+        if (!token) {
+          return of(authActions.getCurrentUserFailure());
+        }
+        return authService.getCurrentUser().pipe(
+          map((currentUser: CurrentUserInterface) => {
+            return authActions.getCurrentUserSuccess({ currentUser });
+          }),
+          catchError(() => {
+            return of(authActions.getCurrentUserFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
 );

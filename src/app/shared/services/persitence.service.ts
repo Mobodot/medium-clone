@@ -17,7 +17,6 @@ export class PersistenceService {
       const localStorageItem = localStorage.getItem(key);
       return localStorageItem ? JSON.parse(localStorageItem) : null;
     } catch (error) {
-      console.log(`No data for ${key} in local storage`, error);
       return null;
     }
   }

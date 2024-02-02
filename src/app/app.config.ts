@@ -7,9 +7,14 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducers';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import { provideEffects } from '@ngrx/effects';
 import * as authEffects from './auth/store/effects';
+import { authInterceptor } from './shared/authInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState(authFeatureKey, authReducer),
     provideEffects(authEffects),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

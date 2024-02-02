@@ -44,6 +44,20 @@ const authFeature = createFeature({
       ...state,
       isSubmitting: false,
       validationErrors: action.errors,
+    })),
+    on(authActions.getCurrentUser, (state) => ({
+      ...state,
+      isloading: true,
+    })),
+    on(authActions.getCurrentUserSuccess, (state, action) => ({
+      ...state,
+      isloading: false,
+      currentUser: action.currentUser,
+    })),
+    on(authActions.getCurrentUserFailure, (state) => ({
+      ...state,
+      isloading: false,
+      currentUser: null,
     }))
   ),
 });
