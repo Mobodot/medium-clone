@@ -6,7 +6,7 @@ import { combineLatest } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-topbar',
+  selector: 'app-top-bar',
   templateUrl: './topbar.component.html',
   standalone: true,
   imports: [RouterLink, CommonModule],

@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { PersistenceService } from './services/persitence.service';
+import { PersistenceService } from './persitence.service';
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (request, next) => {

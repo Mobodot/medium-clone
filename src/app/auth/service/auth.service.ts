@@ -13,23 +13,24 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    // const url = 'https://api.realworld.io.api/users';
+    // const url = 'https://api.realworld.io/api/users';
     const url = 'http://localhost:3000/api/users';
-    // const url = environmental.apiUrl + '/users';
     return this.http
       .post<AuthResponseInterface>(url, data)
       .pipe(map((response: AuthResponseInterface) => response.user));
   }
 
   login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
-    const url = 'http://localhost:3000/api/users/login';
+    const url = 'https://api.realworld.io/api/users/login';
+    // const url = 'http://localhost:3000/api/users/login';
     return this.http
       .post<AuthResponseInterface>(url, data)
       .pipe(map((response) => response.user));
   }
 
   getCurrentUser(): Observable<CurrentUserInterface> {
-    const url = 'http://localhost:3000/api/user';
+    const url = 'https://api.realworld.io/api/user';
+    // const url = 'http://localhost:3000/api/user';
     return this.http
       .get<AuthResponseInterface>(url)
       .pipe(map((response) => response.user));
