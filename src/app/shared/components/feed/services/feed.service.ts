@@ -10,8 +10,8 @@ export class FeedService {
   constructor(private http: HttpClient) {}
 
   getFeed(url: string): Observable<GetFeedResponseInterface> {
-    const fullUrl = 'https://api.realworld.io/api/' + url;
-    // const fullUrl = 'http://localhost:3000/api/' + url;
+    const fullUrl = 'https://api.realworld.io/api' + url;
+    // const fullUrl = 'http://localhost:3000/api' + url;
     return this.http.get<GetFeedResponseInterface>(fullUrl);
   }
 }
