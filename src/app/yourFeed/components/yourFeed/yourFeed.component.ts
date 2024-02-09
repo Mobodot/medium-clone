@@ -16,5 +16,5 @@ import { FeedTogglerComponent } from '../../../shared/components/feedToggler/fee
   ],
 })
 export class YourFeedComponent {
-  apiUrl: string = '/feed';
+  apiUrl: string = 'articles/feed';
 }
