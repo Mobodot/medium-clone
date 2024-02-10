@@ -7,7 +7,7 @@ import { ArticleInterface } from '../../shared/types/article.interface';
 import { ArticleService } from '../services/article.service';
 import { Router } from '@angular/router';
 
-export const articleEffects = createEffect(
+export const getArticleEffects = createEffect(
   (
     actions$ = inject(Actions),
     articleService = inject(SharedArticleService)

@@ -4,7 +4,7 @@ import { ArticleRequestInterface } from '../../shared/types/articleRequest.inter
 import { BackendErrorsInterface } from '../../shared/types/backendError.interface';
 
 export const createArticleActions = createActionGroup({
-  source: 'createarticle',
+  source: 'create article',
   events: {
     'create article': props<{ request: ArticleRequestInterface }>(),
     'create article Success': props<{ article: ArticleInterface }>(),
