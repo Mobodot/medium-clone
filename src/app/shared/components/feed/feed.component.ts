@@ -20,6 +20,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import queryString from 'query-string';
 import { TagListComponent } from '../tagList/tagList.component';
+import { AddToFavoriteComponent } from '../addToFavorite/addToFavorite.component';
 
 @Component({
   selector: 'app-feed',
@@ -32,6 +33,7 @@ import { TagListComponent } from '../tagList/tagList.component';
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
+    AddToFavoriteComponent,
   ],
 })
 export class FeedComponent implements OnInit, OnChanges {

@@ -23,6 +23,8 @@ import {
 import * as authEffects from './auth/store/effects';
 import * as feedEffects from './shared/store/effects';
 import * as popularTagsEffects from './shared/components/popularTags/store/effects';
+import * as addToFavoriteEffects from './shared/components/addToFavorite/store/effects';
+import { AddToFavoriteService } from './shared/components/addToFavorite/services/addToFavorite.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,7 +35,12 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
-    provideEffects(authEffects, feedEffects, popularTagsEffects),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      popularTagsEffects,
+      addToFavoriteEffects
+    ),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideStoreDevtools({
       maxAge: 25,
@@ -42,5 +49,6 @@ export const appConfig: ApplicationConfig = {
       trace: false,
       traceLimit: 75,
     }),
+    AddToFavoriteService,
   ],
 };
