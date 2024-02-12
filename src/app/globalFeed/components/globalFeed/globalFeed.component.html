@@ -1,5 +1,12 @@
+<!-- <ng-container *ngIf="currentUser$ | async as user">
+  <h3>{{ user.username }}</h3>
+</ng-container> -->
+
 <div class="home-page">
-  <app-banner></app-banner>
+  <ng-container *ngIf="isCurrentUser$ | async; else elseBlock"></ng-container>
+  <ng-template #elseBlock>
+    <app-banner></app-banner>
+  </ng-template>
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
@@ -12,3 +19,8 @@
     </div>
   </div>
 </div>
+
+<!-- <div *ngIf="condition; else elseBlock">
+  Content to render when condition is true.
+</div>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->

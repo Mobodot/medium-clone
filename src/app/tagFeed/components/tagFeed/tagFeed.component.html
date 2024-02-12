@@ -1,5 +1,8 @@
 <div class="home-page">
-  <app-banner></app-banner>
+  <ng-container *ngIf="isCurrentUser$ | async; else elseBlock"></ng-container>
+  <ng-template #elseBlock>
+    <app-banner></app-banner>
+  </ng-template>
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
